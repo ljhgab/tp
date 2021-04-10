@@ -255,14 +255,11 @@ Shows a message explaining how to access the help page.
 Adds a task into the task list.
 
 Format: `add_task n/TASKNAME d/DEADLINE p/PRIORITY [c/CATEGORY]... [t/TAG]...`
-* `n/` is followed by the task name, it is case-sensitive.
-* `d/` is followed by the date of deadline, with the format `YYYY-MM-DD`, deadline cannot be a past date. Here, `Y` means
-  the year, `M` means the month and `D` means the day and all of them has to be integers and the date must be a valid date.
+* `n/` is followed by the task name.
+* `d/` is followed by the date, with the format YYYY-MM-DD, deadline cannot be a past date.
 * `p/` is followed by the priority, with 0 being highest and 9 being lowest. Other inputs are not accepted.
-* `c/` is followed by the category. Different categories are separated by white space. It is optional.
-* `t/` is followed by the tag. Different tags are separated by white space. It is optional.
-* Note that any valid prefixes and input arguments (e.g. n/Homework 1) followed by invalid prefixes and input arguments
-  (e.g. name/Name, tag/Tag or cat/Category) will lead to an invalid format error of the valid input.
+* `c/` is followed by the category. It is optional.
+* `t/` is followed by the tag. It is optional.
 
 Examples:
 * `add_task n/CS2103 assignment d/2022-02-27 p/1 c/schoolwork t/urgent` adds a new task named "CS2103 assignment" with the respective parameters.
@@ -272,18 +269,15 @@ Examples:
 
 
 ### Deleting a task: `delete_task`
-Deletes a task from the displayed task list.
+Deletes a task from the task list.
 
 Format: `delete_task INDEX`
-* Deletes the task at the specified INDEX. 
-* Note that only one `INDEX` is accepted, multiple `INDEX` will lead to input format error.
-* The `INDEX` refers to the index number shown in the **displayed** task list.
-* The `INDEX` must be a positive and valid integer 1, 2, 3, ... i.e. `0`, negative integers and integers greater than
-`2147482637` will lead to input format error.
+* Deletes the task at the specified INDEX.
+* The index refers to the index number shown in the displayed task list.
+* The index must be a positive and valid integer 1, 2, 3, ...
 
 Examples:
-* `list` followed by `delete_task 2` deletes the second task in the full task list.
-* `find_task homework` followed by `delete_task 1` deletes the first task in the result of the `find_task` command.
+* `delete_task 2` deletes the second task in the task list.
 
 [Return to Feature List](#feature-list)
 
@@ -389,9 +383,8 @@ Format: `today_task`
 ### Finding tasks by name: `find_task`
 Finds tasks whose names contain any of the given keywords from the task list.
 
-Format: `find_task KEYWORD1 [KEYWORD2] ...`
+Format: `find_task KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g. `homework` will match `Homework`.
-* The search scope is the **full** task list.
 * The order of the keywords does not matter. e.g. `Practice Problems` will match `Problems Practice`.
 * Only the name of the tasks is searched.
 * Only full words will be matched. e.g. `CS` will not match `CS2103`.
